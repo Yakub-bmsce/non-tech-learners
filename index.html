@@ -16,97 +16,54 @@
             --bg: #0f172a; --text: #f1f5f9; --sidebar: #1e293b; --card: #1e293b; --border: #334155;
         }
         * { box-sizing: border-box; transition: background 0.3s, color 0.3s; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Login Overlay */
         #login-overlay { 
             position: fixed; inset: 0; 
             background: radial-gradient(circle at top left, #6366f1, #a855f7, #f43f5e);
             display: flex; align-items: center; justify-content: center; z-index: 3000; 
         }
-        .login-card { 
-            background: var(--card); padding: 3rem; border-radius: 24px; text-align: center; 
-            max-width: 450px; width: 90%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); 
-            animation: slideUp 0.5s ease-out;
-        }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .login-card { background: var(--card); padding: 3rem; border-radius: 24px; text-align: center; max-width: 450px; width: 90%; }
 
-        /* Modern Navbar */
-        .navbar { 
-            height: 75px; background: var(--sidebar); border-bottom: 1px solid var(--border); 
-            display: flex; align-items: center; justify-content: space-between; 
-            padding: 0 2rem; position: sticky; top: 0; z-index: 1000; 
-        }
+        .navbar { height: 75px; background: var(--sidebar); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; }
         .logo { font-weight: 800; font-size: 1.5rem; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Layout & Progress */
         .progress-container { height: 4px; width: 100%; background: var(--border); position: fixed; top: 75px; z-index: 999; }
         #progress-bar { height: 100%; width: 0%; background: var(--primary); transition: width 0.4s; }
 
         .main-container { display: flex; }
-        .sidebar { 
-            width: 320px; background: var(--sidebar); padding: 2rem 1.5rem; 
-            height: calc(100vh - 75px); position: sticky; top: 75px; 
-            border-right: 1px solid var(--border); overflow-y: auto; 
-        }
-        .content { flex: 1; padding: 3rem 2rem; max-width: 900px; margin: 0 auto; min-height: 100vh; }
+        .sidebar { width: 320px; background: var(--sidebar); padding: 2rem 1.5rem; height: calc(100vh - 75px); position: sticky; top: 75px; border-right: 1px solid var(--border); overflow-y: auto; }
+        .content { flex: 1; padding: 3rem 2rem; max-width: 1000px; margin: 0 auto; min-height: 100vh; }
 
-        /* Components */
-        .card { 
-            background: var(--card); padding: 2.5rem; border-radius: 20px; 
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid var(--border); 
-            margin-bottom: 2.5rem; 
-        }
-        .analogy-box { background: rgba(99, 102, 241, 0.08); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
-        h1, h2, h3 { color: var(--primary); margin-top: 0; }
-        pre { background: var(--code-bg); color: #e2e8f0; padding: 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.9rem; margin: 1.5rem 0; border-left: 4px solid var(--secondary); font-family: 'Consolas', monospace; }
-        .btn { 
-            background: var(--primary); color: white; border: none; padding: 14px 28px; 
-            border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 1rem;
-            display: inline-flex; align-items: center; gap: 8px;
-        }
-        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
-
-        .topic-link { 
-            display: flex; align-items: center; padding: 12px 16px; margin: 8px 0; 
-            cursor: pointer; border-radius: 12px; color: var(--text); font-weight: 600; 
-            transition: 0.2s; border: 1px solid transparent;
-        }
-        .topic-link:hover { background: rgba(99, 102, 241, 0.1); color: var(--primary); }
+        .card { background: var(--card); padding: 2.5rem; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid var(--border); margin-bottom: 2.5rem; }
+        .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .ex-box { background: rgba(99, 102, 241, 0.05); padding: 1.2rem; border-radius: 12px; border: 1px dashed var(--primary); }
+        
+        pre { background: var(--code-bg); color: #e2e8f0; padding: 1.2rem; border-radius: 10px; overflow-x: auto; font-size: 0.85rem; border-left: 4px solid var(--secondary); margin: 10px 0; }
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 700; }
+        .topic-link { display: flex; align-items: center; padding: 12px 16px; margin: 8px 0; cursor: pointer; border-radius: 12px; color: var(--text); font-weight: 600; }
         .topic-link.active { background: var(--primary); color: white; }
-
-        /* Quiz UI */
-        .quiz-option { 
-            display: block; width: 100%; padding: 18px; margin: 12px 0; 
-            border: 2px solid var(--border); border-radius: 15px; cursor: pointer; 
-            text-align: left; background: var(--card); color: var(--text); font-size: 1rem;
-        }
-        .quiz-option:hover:not(:disabled) { border-color: var(--primary); background: rgba(99, 102, 241, 0.05); }
-
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; background: rgba(99, 102, 241, 0.1); color: var(--primary); margin-bottom: 10px; }
         .hidden { display: none !important; }
-        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; background: rgba(99, 102, 241, 0.1); color: var(--primary); }
     </style>
 </head>
 <body data-theme="light">
 
     <div id="login-overlay">
         <div class="login-card">
-            <h1 class="logo" style="font-size: 2.5rem; margin-bottom: 10px;">Mastery Hub</h1>
-            <p style="color: #64748b; margin-bottom: 2rem;">Unlock your coding potential today.</p>
-            <input type="email" id="user-email" placeholder="Enter your email" 
-                style="width:100%; padding:16px; margin-bottom:1.5rem; border-radius:12px; border:2px solid var(--border); font-size: 1rem; outline: none;">
-            <button class="btn" style="width:100%; justify-content: center;" onclick="startApp()">Enter Hub →</button>
+            <h1 class="logo">Mastery Hub</h1>
+            <p>Your journey from Zero to Hero begins here.</p>
+            <input type="email" id="user-email" placeholder="Email" style="width:100%; padding:12px; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border);">
+            <button class="btn" onclick="startApp()">Start Learning</button>
         </div>
     </div>
 
     <nav class="navbar">
         <div class="logo">Programming Mastery Hub</div>
-        <button onclick="toggleTheme()" class="btn" style="background:var(--bg); color:var(--text); border:1px solid var(--border);">🌓 Toggle Theme</button>
+        <button onclick="toggleTheme()" class="btn">🌓 Theme</button>
     </nav>
 
-    <div class="progress-container">
-        <div id="progress-bar"></div>
-    </div>
+    <div class="progress-container"><div id="progress-bar"></div></div>
 
     <div class="main-container">
         <aside class="sidebar" id="sidebar-nav"></aside>
@@ -114,285 +71,164 @@
     </div>
 
     <script>
-        function toggleTheme() {
-            document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-        }
-
+        function toggleTheme() { document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light'; }
+        
         function startApp() {
-            const email = document.getElementById('user-email').value;
-            if(email.includes('@')) {
+            if(document.getElementById('user-email').value.includes('@')) {
                 document.getElementById('login-overlay').classList.add('hidden');
                 generateSidebar();
-                loadContent('intro');
-            } else { alert("Please enter a valid email address."); }
+                loadContent('fundamentals');
+            }
         }
 
         const topics = [
-            { id: 'intro', title: '🏠 Welcome Home', badge: 'Start' },
-            { id: 'fundamentals', title: '📖 Fundamentals', badge: 'Basics' },
-            { id: 'core', title: '⚙️ Core Concepts', badge: 'Essential' },
-            { id: 'control', title: '🔄 Control Structures', badge: 'Logic' },
-            { id: 'functions', title: '📦 Functions', badge: 'Reusable' },
-            { id: 'oop', title: '🧱 OOP Deep-Dive', badge: 'Architecture' },
-            { id: 'ds', title: '📊 Data Structures', badge: 'Advanced' },
-            { id: 'algo', title: '📉 Algorithms', badge: 'Optimization' },
-            { id: 'web', title: '🌐 Web Dev 101', badge: 'Fullstack' },
-            { id: 'software', title: '🛠️ Industry Concepts', badge: 'Professional' },
-            { id: 'quiz', title: '🏆 Final Exam', badge: 'Certification' }
+            { id: 'fundamentals', title: '📖 Fundamentals', badge: '500+ Words' },
+            { id: 'core', title: '⚙️ Core Variables', badge: '10 Examples' },
+            { id: 'control', title: '🔄 Control Flow', badge: '15 Examples' },
+            { id: 'functions', title: '📦 Functions', badge: 'New Module' },
+            { id: 'oop', title: '🧱 OOP Patterns', badge: 'Intermediate' },
+            { id: 'quiz', title: '🏆 Final Exam', badge: 'Certify' }
         ];
 
         function generateSidebar() {
-            const nav = document.getElementById('sidebar-nav');
-            nav.innerHTML = topics.map(topic => `
-                <div class="topic-link" id="link-${topic.id}" onclick="loadContent('${topic.id}')">
-                    <div style="flex:1">${topic.title}</div>
-                    <span style="font-size:0.6rem; opacity:0.6">${topic.badge}</span>
+            document.getElementById('sidebar-nav').innerHTML = topics.map(t => `
+                <div class="topic-link" id="link-${t.id}" onclick="loadContent('${t.id}')">
+                    ${t.title} <span style="font-size:0.6rem; margin-left:auto">${t.badge}</span>
                 </div>
             `).join('');
         }
 
-        function updateProgress(index) {
-            const percent = ((index + 1) / topics.length) * 100;
-            document.getElementById('progress-bar').style.width = percent + '%';
-        }
-
         const contentData = {
-            intro: `
-                <div class="card">
-                    <span class="badge">Welcome</span>
-                    <h1>Hello, Future Developer!</h1>
-                    <p>You've entered a comprehensive learning environment designed to take you from a curious beginner to a job-ready engineer.</p>
-                    <div class="analogy-box">
-                        <b>💡 How this works:</b> Navigate through the modules on the left. Each section builds upon the previous one. Don't skip the "Data Structures" section—it's what separates good coders from great engineers!
-                    </div>
-                    <button class="btn" onclick="loadContent('fundamentals')">Let's Begin →</button>
-                </div>`,
             fundamentals: `
                 <div class="card">
-                    <span class="badge">Module 1</span>
-                    <h1>Programming Fundamentals</h1>
-                    <p>Programming is simply giving a set of instructions to a computer. But computers are "smartly-dumb"—they do exactly what you say, even if it's wrong!</p>
+                    <span class="badge">DEEP DIVE</span>
+                    <h1>The DNA of Computing: Detailed Fundamentals</h1>
+                    <p>To master programming, you must first understand the "Thinking Model" of a machine. A computer is essentially a massive collection of billions of microscopic switches called transistors. These switches have only two states: ON (1) or OFF (0). This is <b>Binary</b>.</p>
                     
-                    <h3>Low-Level vs High-Level</h3>
-                    <ul>
-                        <li><b>Low-Level:</b> Closer to the hardware (Binary, Assembly). Very hard to write but extremely fast.</li>
-                        <li><b>High-Level:</b> Closer to human language (Python, JavaScript). Easy to read but needs a translator.</li>
-                    </ul>
+                    <h3>1. The Hierarchy of Abstraction</h3>
+                    <p>Programming is the act of moving up the ladder of abstraction. At the very bottom is <b>Hardware</b> (Electricity). Above that is <b>Machine Code</b> (1s and 0s). Above that is <b>Assembly</b> (short codes like MOV or ADD). Finally, we reach <b>High-Level Languages</b> like Python, Java, and JavaScript. These languages allow us to write "Human-Readable" text that a <b>Compiler</b> or <b>Interpreter</b> translates back down to those 1s and 0s.</p>
 
                     
 
-                    <h3>Interpreted vs Compiled</h3>
-                    <p>Imagine you have a recipe in Italian:</p>
-                    <ul>
-                        <li><b>Compiled (C++):</b> A translator translates the *whole* book into English before you start cooking.</li>
-                        <li><b>Interpreted (Python):</b> You have a translator standing next to you reading one line at a time while you cook.</li>
-                    </ul>
+                    <h3>2. How Memory (RAM) Works</h3>
+                    <p>Imagine RAM as a giant grid of post-it notes. Each note has an address (like 0x7ffd). When you create a variable, the computer reserves a "post-it note" and writes your value on it. If you create a large list, the computer reserves a "block" of notes. Understanding that memory is finite is why efficient programming matters. Memory leaks happen when you keep sticking "post-it notes" on the wall but never take them down when you're finished!</p>
+
+                    <h3>3. The Logic of Execution</h3>
+                    <p>Computers follow a strictly sequential path called the <b>Instruction Cycle</b>: Fetch, Decode, Execute. 
+                    * <b>Fetch:</b> Get the next line of code from memory.
+                    * <b>Decode:</b> Figure out what that line wants (Is it math? Is it a print command?).
+                    * <b>Execute:</b> Perform the action.
+                    This happens billions of times per second (GigaHertz).</p>
+
+                    <h3>4. Compiled vs. Interpreted: The Real Difference</h3>
+                    <p><b>Compiled Languages (C++, Rust, Go):</b> The computer translates the entire source code into a "Binary Executable" file before you ever run it. This makes the program incredibly fast because the translation is already done. However, if you change one line, you must re-compile the whole thing.</p>
+                    <p><b>Interpreted Languages (Python, JS, Ruby):</b> A separate program called an Interpreter reads your code line-by-line <i>while</i> it runs. This is great for beginners because you get instant feedback, but it's generally slower because the "translation" is happening in real-time.</p>
+                    
+                    <h3>5. The Programmer's Mindset</h3>
+                    <p>Programming isn't about learning syntax; it's about <b>Decomposition</b>—breaking a giant, scary problem (like building Facebook) into tiny, manageable tasks (like "How do I show one image?"). If you can solve the tiny tasks, the big problem solves itself.</p>
                 </div>`,
+
             core: `
                 <div class="card">
-                    <span class="badge">Module 2</span>
-                    <h1>Core Concepts</h1>
-                    <h3>1. Variables (The Containers)</h3>
-                    <p>Variables are like labeled boxes in a warehouse. You can put things in, swap them, or take them out.</p>
-                    <pre>
-# Python Example
-player_name = "Yakub"  # String
-player_score = 100      # Integer
-is_online = True        # Boolean
-
-# Re-assigning
-player_score = player_score + 50 # Now 150</pre>
-
-                    <h3>2. Type Casting</h3>
-                    <p>Sometimes you need to change a box type. For example, changing the number "5" (text) into the number 5 (math).</p>
-                    <pre>text_num = "10"\nactual_num = int(text_num) # Now you can do math with it!</pre>
+                    <h1>Core Concepts: Variables & Types</h1>
+                    <p>Here are 10 ways we use variables to store different kinds of data:</p>
+                    <div class="example-grid">
+                        <div class="ex-box"><b>1. Numeric (Int):</b> <code>age = 25</code></div>
+                        <div class="ex-box"><b>2. Floating Point:</b> <code>price = 19.99</code></div>
+                        <div class="ex-box"><b>3. Strings:</b> <code>name = "Alice"</code></div>
+                        <div class="ex-box"><b>4. Booleans:</b> <code>is_active = True</code></div>
+                        <div class="ex-box"><b>5. Lists/Arrays:</b> <code>items = [1, 2, 3]</code></div>
+                        <div class="ex-box"><b>6. Constants:</b> <code>PI = 3.14159</code></div>
+                        <div class="ex-box"><b>7. Dictionaries:</b> <code>user = {"id": 1}</code></div>
+                        <div class="ex-box"><b>8. Null/None:</b> <code>data = None</code></div>
+                        <div class="ex-box"><b>9. Concatenation:</b> <code>full = name + " Smith"</code></div>
+                        <div class="ex-box"><b>10. Type Check:</b> <code>type(age) # Returns Int</code></div>
+                    </div>
                 </div>`,
+
             control: `
                 <div class="card">
-                    <span class="badge">Module 3</span>
-                    <h1>Control Structures: Making Decisions</h1>
-                    <h3>The 'If' Statement</h3>
-                    <p>Your program's brain. If a condition is met, do X; otherwise, do Y.</p>
-                    <pre>
-age = 19
-if age >= 18:
-    print("Welcome to the Hub")
-else:
-    print("Access Denied")</pre>
-
-                    <h3>Loops (The Repetition)</h3>
-                    <p>Imagine you need to print "Hello" 1,000 times. You won't write it 1,000 times; you use a loop.</p>
-                    <pre>
-# For Loop (When you know how many times)
-for i in range(5):
-    print("Attempt number", i)
-
-# While Loop (Until something changes)
-battery = 10
-while battery > 0:
-    print("Phone is ON")
-    battery -= 1</pre>
+                    <h1>Control Flow: 15 Logical Examples</h1>
+                    <p>Control structures allow the code to branch and repeat.</p>
+                    <div class="example-grid">
+                        <div class="ex-box"><b>1. Simple If:</b> Checking if a number is positive.</div>
+                        <div class="ex-box"><b>2. If-Else:</b> Login success vs Failure.</div>
+                        <div class="ex-box"><b>3. Elif Chain:</b> Grading (A, B, C, D, F).</div>
+                        <div class="ex-box"><b>4. Nested If:</b> Checking if user is Admin AND logged in.</div>
+                        <div class="ex-box"><b>5. For Loop:</b> Printing numbers 1 to 10.</div>
+                        <div class="ex-box"><b>6. While Loop:</b> Waiting for a user to type 'quit'.</div>
+                        <div class="ex-box"><b>7. Break:</b> Stop a loop early if a value is found.</div>
+                        <div class="ex-box"><b>8. Continue:</b> Skip the current item but keep looping.</div>
+                        <div class="ex-box"><b>9. List Comprehension:</b> Creating a new list in one line.</div>
+                        <div class="ex-box"><b>10. Logical AND:</b> <code>if a > 0 and b > 0:</code></div>
+                        <div class="ex-box"><b>11. Logical OR:</b> <code>if day == "Sat" or day == "Sun":</code></div>
+                        <div class="ex-box"><b>12. NOT Operator:</b> <code>if not is_locked:</code></div>
+                        <div class="ex-box"><b>13. Infinite Loop:</b> <code>while True:</code> (Careful!)</div>
+                        <div class="ex-box"><b>14. Range Stepping:</b> <code>for i in range(0, 10, 2):</code></div>
+                        <div class="ex-box"><b>15. Ternary:</b> <code>status = "Adult" if age > 18 else "Child"</code></div>
+                    </div>
                 </div>`,
+
+            functions: `
+                <div class="card">
+                    <span class="badge">ESSENTIAL</span>
+                    <h1>Functions: The Power of Reusability</h1>
+                    <p>A function is a block of code that only runs when called. Think of it as a <b>Recipe</b>. You write it once, and you can cook that meal whenever you want by just calling its name.</p>
+                    
+                    <h3>The 3 Parts of a Function:</h3>
+                    <ul>
+                        <li><b>Definition:</b> Creating the function (<code>def function_name:</code>)</li>
+                        <li><b>Parameters:</b> The inputs (like ingredients for the recipe).</li>
+                        <li><b>Return:</b> The output (the finished dish).</li>
+                    </ul>
+
+                    <h3>12 Practical Function Examples:</h3>
+                    <div class="example-grid">
+                        <div class="ex-box"><b>1. Basic Greeting:</b><pre>def hi():\n  print("Hello!")</pre></div>
+                        <div class="ex-box"><b>2. Parameters:</b><pre>def greet(name):\n  print("Hi " + name)</pre></div>
+                        <div class="ex-box"><b>3. Returning Values:</b><pre>def add(a, b):\n  return a + b</pre></div>
+                        <div class="ex-box"><b>4. Default Values:</b><pre>def power(v, p=2):\n  return v ** p</pre></div>
+                        <div class="ex-box"><b>5. Multiple Returns:</b><pre>def stats(nums):\n  return min(nums), max(nums)</pre></div>
+                        <div class="ex-box"><b>6. Recursion:</b> A function calling itself (Factorials).</div>
+                        <div class="ex-box"><b>7. Lambda:</b> Anonymous one-line functions.</div>
+                        <div class="ex-box"><b>8. Callback:</b> Passing a function into another function.</div>
+                        <div class="ex-box"><b>9. Math Helper:</b> Converting Celsius to Fahrenheit.</div>
+                        <div class="ex-box"><b>10. List Processor:</b> A function that squares every number in a list.</div>
+                        <div class="ex-box"><b>11. Validation:</b> Function that checks if an email is valid.</div>
+                        <div class="ex-box"><b>12. Formatting:</b> Function that turns 1000 into "$1,000.00".</div>
+                    </div>
+                </div>`,
+
             oop: `
                 <div class="card">
-                    <span class="badge">Module 4</span>
                     <h1>Object Oriented Programming (OOP)</h1>
-                    <div class="analogy-box">
-                        <b>🚗 The Car Analogy:</b> 
-                        A <b>Class</b> is the blueprint of a car. It says every car has a color and a speed. 
-                        An <b>Object</b> is the actual car (The Red Ferrari) parked in your garage.
+                    <p>OOP is about modeling code after real-world objects.</p>
+                    <div class="example-grid">
+                        <div class="ex-box"><b>Classes:</b> The Blueprint (The idea of a 'User').</div>
+                        <div class="ex-box"><b>Objects:</b> The Instance (User 'John').</div>
+                        <div class="ex-box"><b>Methods:</b> Actions (User .login()).</div>
+                        <div class="ex-box"><b>Attributes:</b> Properties (User .email).</div>
                     </div>
-                    
-                    <h3>The 4 Pillars of OOP</h3>
-
-                    
-
-                    <ul>
-                        <li><b>Encapsulation:</b> Hiding the engine details under the hood. The driver only sees the steering wheel.</li>
-                        <li><b>Inheritance:</b> A "SportsCar" class can inherit features from a "Vehicle" class.</li>
-                        <li><b>Polymorphism:</b> Different objects can use the same command (e.g., both a Dog and a Cat can .speak(), but one says 'Woof' and the other 'Meow').</li>
-                        <li><b>Abstraction:</b> Showing only essential features.</li>
-                    </ul>
-                </pre>
-                </div>`,
-            ds: `
-                <div class="card">
-                    <span class="badge">Module 5</span>
-                    <h1>Data Structures</h1>
-                    <p>How we organize data determines how fast our apps work.</p>
-                    
-                    <h3>1. Stacks (LIFO)</h3>
-                    <p>Last-In, First-Out. Like a stack of cafeteria trays. You can only take the top one.</p>
-                    <pre># Used in: 'Undo' buttons, Browser Back button</pre>
-
-                    <h3>2. Queues (FIFO)</h3>
-                    <p>First-In, First-Out. Like a line at Starbucks. The first person in is the first person served.</p>
-                    <pre># Used in: Printer task lists, Restaurant orders</pre>
-
-                    <h3>3. Linked Lists</h3>
-                    <p>A chain of nodes where each node points to the next one.</p>
-
-                    
-                </div>`,
-            algo: `
-                <div class="card">
-                    <span class="badge">Module 6</span>
-                    <h1>Algorithms & Big O</h1>
-                    <h3>Big O Notation</h3>
-                    <p>This is how we measure how "heavy" an algorithm is as data grows.</p>
-                    <ul>
-                        <li><b>O(1):</b> Instant. Like looking up your own name on a piece of paper.</li>
-                        <li><b>O(n):</b> Linear. Reading every name in a phonebook one by one.</li>
-                        <li><b>O(log n):</b> Efficient. Like Binary Search (splitting the book in half repeatedly).</li>
-                    </ul>
-                    <h3>Binary Search Example</h3>
-                    <p>If you search for '10' in a list of 1-100, Binary Search finds it in ~7 steps, whereas Linear Search might take 100.</p>
-                </div>`,
-            web: `
-                <div class="card">
-                    <span class="badge">Module 7</span>
-                    <h1>Web Development</h1>
-                    <h3>How the Web Works</h3>
-                    <p><b>Client:</b> Your browser (Chrome/Safari).<br><b>Server:</b> A computer far away holding the website files.</p>
-                    
-                    <h3>The Modern Stack</h3>
-                    <ul>
-                        <li><b>HTML:</b> The "Bones" (Headings, buttons).</li>
-                        <li><b>CSS:</b> The "Clothes" (Colors, layouts).</li>
-                        <li><b>JavaScript:</b> The "Nervous System" (What happens when you click).</li>
-                    </ul>
                     <pre>
-// Simple JS Interactivity
-document.querySelector('button').addEventListener('click', () => {
-    alert('Form Submitted!');
-});</pre>
-                </div>`,
-            software: `
-                <div class="card">
-                    <span class="badge">Module 8</span>
-                    <h1>Software Engineering Concepts</h1>
-                    <h3>SDLC (Life Cycle)</h3>
-                    <p>You don't just start typing code. Professional teams follow these steps:</p>
-                    <ol>
-                        <li><b>Requirements:</b> What does the client want?</li>
-                        <li><b>Design:</b> Creating UI mockups and database maps.</li>
-                        <li><b>Development:</b> Writing the actual code.</li>
-                        <li><b>Testing:</b> Trying to break the code.</li>
-                        <li><b>Deployment:</b> Sending it to the real world.</li>
-                    </ol>
-                    <h3>Git & Version Control</h3>
-                    <p>Git is like a 'Save Game' system for your code. If you make a mistake, you can teleport back to a version from yesterday.</p>
+class Robot:
+    def __init__(self, name):
+        self.name = name
+    
+    def say_hi(self):
+        print("Beep Boop, I am " + self.name)
+
+my_bot = Robot("R2D2")
+my_bot.say_hi()</pre>
                 </div>`
         };
 
-        const quizQuestions = [
-            { q: "Which language is known as 'Interpreted'?", o: ["C++", "Python", "Java", "Assembly"], a: 1 },
-            { q: "What data structure follows FIFO?", o: ["Stack", "Array", "Queue", "Tree"], a: 2 },
-            { q: "Which OOP pillar allows a child class to use parent methods?", o: ["Encapsulation", "Polymorphism", "Inheritance", "Abstraction"], a: 2 },
-            { q: "What is the time complexity of Binary Search?", o: ["O(n)", "O(n²)", "O(log n)", "O(1)"], a: 2 },
-            { q: "Which HTML tag is used for the largest heading?", o: ["<head>", "<h6>", "<h1>", "<header>"], a: 2 },
-            { q: "What does 'LIFO' stand for?", o: ["Left In Fast Out", "Last In First Out", "List In File Out", "None"], a: 1 },
-            { q: "In Git, what command saves your changes locally?", o: ["git push", "git pull", "git commit", "git delete"], a: 2 },
-            { q: "Which loop runs at least once regardless of the condition?", o: ["For", "While", "Do-While", "Repeat"], a: 2 },
-            { q: "What type of language is closest to machine binary?", o: ["High-Level", "Low-Level", "Middle-Level", "Scripting"], a: 1 },
-            { q: "Which logic gate returns TRUE only if both inputs are TRUE?", o: ["OR", "NOT", "XOR", "AND"], a: 3 },
-            { q: "What is 'Type Casting'?", o: ["Writing code", "Deleting a variable", "Changing data type", "Testing"], a: 2 },
-            { q: "Which part of Web Dev handles the database?", o: ["Frontend", "Backend", "UI Design", "SEO"], a: 1 },
-            { q: "In SDLC, what comes immediately after Design?", o: ["Testing", "Deployment", "Development", "Maintenance"], a: 2 },
-            { q: "Which data structure uses 'nodes' and 'pointers'?", o: ["Array", "Linked List", "Stack", "Variable"], a: 1 },
-            { q: "What is 'Encapsulation'?", o: ["Hiding data", "Copying code", "Printing data", "Deleting data"], a: 0 }
-        ];
-
-        let score = 0;
-
         function loadContent(key) {
-            if (key === 'quiz') {
-                renderQuiz();
-            } else {
-                document.getElementById('main-content').innerHTML = contentData[key] || `<h1>Content Coming Soon</h1>`;
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            const index = topics.findIndex(t => t.id === key);
-            updateProgress(index);
+            document.getElementById('main-content').innerHTML = contentData[key] || `<h1>Coming Soon</h1>`;
+            window.scrollTo(0,0);
+            const idx = topics.findIndex(t => t.id === key);
+            document.getElementById('progress-bar').style.width = ((idx+1)/topics.length)*100 + "%";
             document.querySelectorAll('.topic-link').forEach(l => l.classList.remove('active'));
             document.getElementById(`link-${key}`).classList.add('active');
-        }
-
-        function renderQuiz() {
-            score = 0;
-            let html = `<div class="card"><h1>🏆 Certification Exam</h1><p>Test your knowledge. Score at least 12/15 to pass!</p></div>`;
-            quizQuestions.forEach((item, index) => {
-                html += `
-                <div class="card" id="q-card-${index}">
-                    <h3>${index + 1}. ${item.q}</h3>
-                    ${item.o.map((opt, i) => `<button class="quiz-option" onclick="checkAnswer(${index}, ${i}, this)">${opt}</button>`).join('')}
-                </div>`;
-            });
-            document.getElementById('main-content').innerHTML = html;
-        }
-
-        function checkAnswer(qIdx, choice, btn) {
-            const correct = quizQuestions[qIdx].a;
-            const buttons = btn.parentElement.querySelectorAll('.quiz-option');
-            if(choice === correct) {
-                btn.style.background = "#10b981"; btn.style.color = "white";
-                score++;
-            } else {
-                btn.style.background = "#f43f5e"; btn.style.color = "white";
-                buttons[correct].style.border = "2px solid #10b981";
-            }
-            buttons.forEach(b => b.disabled = true);
-            if (qIdx === quizQuestions.length - 1) showFinalScore();
-        }
-
-        function showFinalScore() {
-            const res = document.createElement('div');
-            res.className = 'card'; res.style.textAlign = 'center';
-            res.innerHTML = `<h1>Exam Over!</h1><div style="font-size:3rem; font-weight:800;">${score}/15</div>
-            <p>${score >= 12 ? "🎉 Congratulations! You've passed!" : "Try again to master the concepts!"}</p>
-            <button class="btn" onclick="location.reload()">Restart Course</button>`;
-            document.getElementById('main-content').appendChild(res);
-            res.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
