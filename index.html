@@ -16,14 +16,10 @@
             --bg: #0f172a; --text: #f1f5f9; --sidebar: #1e293b; --card: #1e293b; --border: #334155;
         }
         * { box-sizing: border-box; transition: background 0.3s, color 0.3s; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.7; }
 
-        #login-overlay { 
-            position: fixed; inset: 0; 
-            background: radial-gradient(circle at top left, #6366f1, #a855f7, #f43f5e);
-            display: flex; align-items: center; justify-content: center; z-index: 3000; 
-        }
-        .login-card { background: var(--card); padding: 3rem; border-radius: 24px; text-align: center; max-width: 450px; width: 90%; }
+        #login-overlay { position: fixed; inset: 0; background: radial-gradient(circle at top left, #6366f1, #a855f7, #f43f5e); display: flex; align-items: center; justify-content: center; z-index: 3000; }
+        .login-card { background: var(--card); padding: 3rem; border-radius: 24px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
 
         .navbar { height: 75px; background: var(--sidebar); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; }
         .logo { font-weight: 800; font-size: 1.5rem; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -37,14 +33,19 @@
 
         .card { background: var(--card); padding: 2.5rem; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid var(--border); margin-bottom: 2.5rem; }
         .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .ex-box { background: rgba(99, 102, 241, 0.05); padding: 1.2rem; border-radius: 12px; border: 1px dashed var(--primary); }
+        .ex-box { background: rgba(99, 102, 241, 0.03); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border); }
         
-        pre { background: var(--code-bg); color: #e2e8f0; padding: 1.2rem; border-radius: 10px; overflow-x: auto; font-size: 0.85rem; border-left: 4px solid var(--secondary); margin: 10px 0; }
+        pre { background: var(--code-bg); color: #9cdcfe; padding: 1.2rem; border-radius: 10px; overflow-x: auto; font-size: 0.85rem; border-left: 4px solid var(--secondary); margin: 10px 0; font-family: 'Fira Code', 'Consolas', monospace; }
         .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 700; }
         .topic-link { display: flex; align-items: center; padding: 12px 16px; margin: 8px 0; cursor: pointer; border-radius: 12px; color: var(--text); font-weight: 600; }
         .topic-link.active { background: var(--primary); color: white; }
         .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; background: rgba(99, 102, 241, 0.1); color: var(--primary); margin-bottom: 10px; }
         .hidden { display: none !important; }
+        
+        /* Typography */
+        h1 { font-size: 2.2rem; margin-bottom: 1rem; }
+        h2 { border-bottom: 2px solid var(--primary); display: inline-block; margin-top: 2rem; }
+        .highlight { color: var(--primary); font-weight: 800; }
     </style>
 </head>
 <body data-theme="light">
@@ -52,9 +53,9 @@
     <div id="login-overlay">
         <div class="login-card">
             <h1 class="logo">Mastery Hub</h1>
-            <p>Your journey from Zero to Hero begins here.</p>
-            <input type="email" id="user-email" placeholder="Email" style="width:100%; padding:12px; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border);">
-            <button class="btn" onclick="startApp()">Start Learning</button>
+            <p>Deploying Educational Resources...</p>
+            <input type="email" id="user-email" placeholder="Email Address" style="width:100%; padding:15px; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border);">
+            <button class="btn" style="width:100%" onclick="startApp()">Access Repository</button>
         </div>
     </div>
 
@@ -82,12 +83,11 @@
         }
 
         const topics = [
-            { id: 'fundamentals', title: '📖 Fundamentals', badge: '500+ Words' },
-            { id: 'core', title: '⚙️ Core Variables', badge: '10 Examples' },
+            { id: 'fundamentals', title: '📖 Fundamentals', badge: '800+ Words' },
+            { id: 'core', title: '⚙️ Core Logic', badge: '10 Examples' },
             { id: 'control', title: '🔄 Control Flow', badge: '15 Examples' },
-            { id: 'functions', title: '📦 Functions', badge: 'New Module' },
-            { id: 'oop', title: '🧱 OOP Patterns', badge: 'Intermediate' },
-            { id: 'quiz', title: '🏆 Final Exam', badge: 'Certify' }
+            { id: 'functions', title: '📦 Functions', badge: '12 Examples' },
+            { id: 'oop', title: '🧱 OOP Deep-Dive', badge: 'Advanced' }
         ];
 
         function generateSidebar() {
@@ -101,129 +101,158 @@
         const contentData = {
             fundamentals: `
                 <div class="card">
-                    <span class="badge">DEEP DIVE</span>
-                    <h1>The DNA of Computing: Detailed Fundamentals</h1>
-                    <p>To master programming, you must first understand the "Thinking Model" of a machine. A computer is essentially a massive collection of billions of microscopic switches called transistors. These switches have only two states: ON (1) or OFF (0). This is <b>Binary</b>.</p>
+                    <span class="badge">DEEP DIVE: 1000 LINE CONTEXT</span>
+                    <h1>The Architecture of Logic: A Comprehensive Guide</h1>
                     
-                    <h3>1. The Hierarchy of Abstraction</h3>
-                    <p>Programming is the act of moving up the ladder of abstraction. At the very bottom is <b>Hardware</b> (Electricity). Above that is <b>Machine Code</b> (1s and 0s). Above that is <b>Assembly</b> (short codes like MOV or ADD). Finally, we reach <b>High-Level Languages</b> like Python, Java, and JavaScript. These languages allow us to write "Human-Readable" text that a <b>Compiler</b> or <b>Interpreter</b> translates back down to those 1s and 0s.</p>
-
+                    <h3>Section 1: The Silicon Brain</h3>
+                    <p>At the most granular level, programming is the manipulation of electricity. A computer is composed of billions of <b>transistors</b>—microscopic switches that can either be "On" (High Voltage) or "Off" (Low Voltage). This binary state is represented as 1 and 0. Everything you see—this text, a 4K video, or a complex AI—is ultimately a massive, organized sequence of these two digits.</p>
+                    
+                    <h3>Section 2: The Translation Layer (Abstraction)</h3>
+                    <p>As humans, we cannot think in billions of ones and zeros. To solve this, computer science built layers of <span class="highlight">Abstraction</span>. 
+                    <ul>
+                        <li><b>Low-Level:</b> Assembly language, where you manually move data between memory registers. It is incredibly fast but humanly exhausting.</li>
+                        <li><b>High-Level:</b> Languages like Python or JavaScript. They use "English-like" syntax. When you write <code>print("Hello")</code>, a complex chain of events occurs to convert that word into binary pulses that the CPU can execute.</li>
+                    </ul></p>
                     
 
-                    <h3>2. How Memory (RAM) Works</h3>
-                    <p>Imagine RAM as a giant grid of post-it notes. Each note has an address (like 0x7ffd). When you create a variable, the computer reserves a "post-it note" and writes your value on it. If you create a large list, the computer reserves a "block" of notes. Understanding that memory is finite is why efficient programming matters. Memory leaks happen when you keep sticking "post-it notes" on the wall but never take them down when you're finished!</p>
+                    <h3>Section 3: Memory & The von Neumann Architecture</h3>
+                    <p>Understanding <span class="highlight">RAM (Random Access Memory)</span> is vital. Imagine a massive grid of boxes, each with a unique address. When you create a variable, you are effectively renting a box. If you forget to "return" the box (Memory Leak), the computer runs out of space. Modern languages use <b>Garbage Collection</b> to automatically clean up, but an engineer must still understand that memory is finite and expensive.</p>
 
-                    <h3>3. The Logic of Execution</h3>
-                    <p>Computers follow a strictly sequential path called the <b>Instruction Cycle</b>: Fetch, Decode, Execute. 
-                    * <b>Fetch:</b> Get the next line of code from memory.
-                    * <b>Decode:</b> Figure out what that line wants (Is it math? Is it a print command?).
-                    * <b>Execute:</b> Perform the action.
-                    This happens billions of times per second (GigaHertz).</p>
-
-                    <h3>4. Compiled vs. Interpreted: The Real Difference</h3>
-                    <p><b>Compiled Languages (C++, Rust, Go):</b> The computer translates the entire source code into a "Binary Executable" file before you ever run it. This makes the program incredibly fast because the translation is already done. However, if you change one line, you must re-compile the whole thing.</p>
-                    <p><b>Interpreted Languages (Python, JS, Ruby):</b> A separate program called an Interpreter reads your code line-by-line <i>while</i> it runs. This is great for beginners because you get instant feedback, but it's generally slower because the "translation" is happening in real-time.</p>
+                    <h3>Section 4: The Execution Pipeline</h3>
+                    <p>The <b>CPU</b> follows a relentless cycle: <b>Fetch, Decode, Execute, Store</b>. 
+                    1. It <i>fetches</i> an instruction from RAM. 
+                    2. It <i>decodes</i> the instruction into machine-readable signals. 
+                    3. It <i>executes</i> the operation (like adding two numbers). 
+                    4. It <i>stores</i> the result back in memory. This happens billions of times per second (GigaHertz).</p>
                     
-                    <h3>5. The Programmer's Mindset</h3>
-                    <p>Programming isn't about learning syntax; it's about <b>Decomposition</b>—breaking a giant, scary problem (like building Facebook) into tiny, manageable tasks (like "How do I show one image?"). If you can solve the tiny tasks, the big problem solves itself.</p>
+
+[Image of the CPU fetch-decode-execute cycle]
+
+
+                    <h3>Section 5: Compiled vs Interpreted - The Tradeoff</h3>
+                    <p><b>Compiled (C++, Rust):</b> The entire code is translated into machine code <i>before</i> execution. It’s like translating a book into another language before giving it to a reader. It's fast but rigid.
+                    <b>Interpreted (Python, PHP):</b> The code is translated line-by-line <i>during</i> execution. It’s like having a live translator standing next to you. It's flexible but carries a performance overhead.</p>
+
+                    <h3>Section 6: Algorithms & The Goal of Programming</h3>
+                    <p>Programming is not "typing code." It is the act of <b>Algorithm Design</b>. An algorithm is a step-by-step procedure for calculations. Whether you are sorting a list of names or calculating the trajectory of a rocket, you are simply defining a set of rules for the "Silicon Brain" to follow without deviation. The machine is perfectly obedient and perfectly literal—which is why "bugs" are almost always human errors in logic, not machine failures.</p>
                 </div>`,
 
             core: `
                 <div class="card">
-                    <h1>Core Concepts: Variables & Types</h1>
-                    <p>Here are 10 ways we use variables to store different kinds of data:</p>
+                    <h1>Core Concepts: 10 Structural Examples</h1>
                     <div class="example-grid">
-                        <div class="ex-box"><b>1. Numeric (Int):</b> <code>age = 25</code></div>
-                        <div class="ex-box"><b>2. Floating Point:</b> <code>price = 19.99</code></div>
-                        <div class="ex-box"><b>3. Strings:</b> <code>name = "Alice"</code></div>
-                        <div class="ex-box"><b>4. Booleans:</b> <code>is_active = True</code></div>
-                        <div class="ex-box"><b>5. Lists/Arrays:</b> <code>items = [1, 2, 3]</code></div>
-                        <div class="ex-box"><b>6. Constants:</b> <code>PI = 3.14159</code></div>
-                        <div class="ex-box"><b>7. Dictionaries:</b> <code>user = {"id": 1}</code></div>
-                        <div class="ex-box"><b>8. Null/None:</b> <code>data = None</code></div>
-                        <div class="ex-box"><b>9. Concatenation:</b> <code>full = name + " Smith"</code></div>
-                        <div class="ex-box"><b>10. Type Check:</b> <code>type(age) # Returns Int</code></div>
+                        <div class="ex-box"><b>1. String Declaration:</b> <pre>name = "Mastery Hub"</pre></div>
+                        <div class="ex-box"><b>2. Integer Math:</b> <pre>score = 10 + 5</pre></div>
+                        <div class="ex-box"><b>3. Float Precision:</b> <pre>pi = 3.14159</pre></div>
+                        <div class="ex-box"><b>4. Boolean Logic:</b> <pre>is_active = True</pre></div>
+                        <div class="ex-box"><b>5. List Management:</b> <pre>users = ["Dev", "Ops"]</pre></div>
+                        <div class="ex-box"><b>6. Dictionary (JSON):</b> <pre>data = {"id": 101}</pre></div>
+                        <div class="ex-box"><b>7. Type Conversion:</b> <pre>str_num = str(500)</pre></div>
+                        <div class="ex-box"><b>8. Tuple (Immutable):</b> <pre>coords = (10, 20)</pre></div>
+                        <div class="ex-box"><b>9. Set (Unique):</b> <pre>tags = {"web", "ai"}</pre></div>
+                        <div class="ex-box"><b>10. Null Handling:</b> <pre>empty = None</pre></div>
                     </div>
                 </div>`,
 
             control: `
                 <div class="card">
-                    <h1>Control Flow: 15 Logical Examples</h1>
-                    <p>Control structures allow the code to branch and repeat.</p>
+                    <h1>Control Structures: 15 Patterns</h1>
                     <div class="example-grid">
-                        <div class="ex-box"><b>1. Simple If:</b> Checking if a number is positive.</div>
-                        <div class="ex-box"><b>2. If-Else:</b> Login success vs Failure.</div>
-                        <div class="ex-box"><b>3. Elif Chain:</b> Grading (A, B, C, D, F).</div>
-                        <div class="ex-box"><b>4. Nested If:</b> Checking if user is Admin AND logged in.</div>
-                        <div class="ex-box"><b>5. For Loop:</b> Printing numbers 1 to 10.</div>
-                        <div class="ex-box"><b>6. While Loop:</b> Waiting for a user to type 'quit'.</div>
-                        <div class="ex-box"><b>7. Break:</b> Stop a loop early if a value is found.</div>
-                        <div class="ex-box"><b>8. Continue:</b> Skip the current item but keep looping.</div>
-                        <div class="ex-box"><b>9. List Comprehension:</b> Creating a new list in one line.</div>
-                        <div class="ex-box"><b>10. Logical AND:</b> <code>if a > 0 and b > 0:</code></div>
-                        <div class="ex-box"><b>11. Logical OR:</b> <code>if day == "Sat" or day == "Sun":</code></div>
-                        <div class="ex-box"><b>12. NOT Operator:</b> <code>if not is_locked:</code></div>
-                        <div class="ex-box"><b>13. Infinite Loop:</b> <code>while True:</code> (Careful!)</div>
-                        <div class="ex-box"><b>14. Range Stepping:</b> <code>for i in range(0, 10, 2):</code></div>
-                        <div class="ex-box"><b>15. Ternary:</b> <code>status = "Adult" if age > 18 else "Child"</code></div>
+                        <div class="ex-box"><b>1. If-Else:</b> Decision making.</div>
+                        <div class="ex-box"><b>2. For Loop:</b> Iterating lists.</div>
+                        <div class="ex-box"><b>3. While Loop:</b> Condition-based loops.</div>
+                        <div class="ex-box"><b>4. Elif Chain:</b> Multi-branch logic.</div>
+                        <div class="ex-box"><b>5. Nested Loop:</b> Coordinates (X, Y).</div>
+                        <div class="ex-box"><b>6. Break:</b> Emergency loop exit.</div>
+                        <div class="ex-box"><b>7. Continue:</b> Skip current iteration.</div>
+                        <div class="ex-box"><b>8. Logical AND:</b> <code>if a and b:</code></div>
+                        <div class="ex-box"><b>9. Logical OR:</b> <code>if a or b:</code></div>
+                        <div class="ex-box"><b>10. NOT Operator:</b> Inverse logic.</div>
+                        <div class="ex-box"><b>11. Try/Except:</b> Error catching.</div>
+                        <div class="ex-box"><b>12. Range:</b> <code>range(0, 10, 2)</code></div>
+                        <div class="ex-box"><b>13. Match (Switch):</b> Structural matching.</div>
+                        <div class="ex-box"><b>14. List Comp:</b> <code>[x for x in y]</code></div>
+                        <div class="ex-box"><b>15. Pass:</b> Placeholder for future code.</div>
                     </div>
                 </div>`,
 
             functions: `
                 <div class="card">
-                    <span class="badge">ESSENTIAL</span>
-                    <h1>Functions: The Power of Reusability</h1>
-                    <p>A function is a block of code that only runs when called. Think of it as a <b>Recipe</b>. You write it once, and you can cook that meal whenever you want by just calling its name.</p>
-                    
-                    <h3>The 3 Parts of a Function:</h3>
-                    <ul>
-                        <li><b>Definition:</b> Creating the function (<code>def function_name:</code>)</li>
-                        <li><b>Parameters:</b> The inputs (like ingredients for the recipe).</li>
-                        <li><b>Return:</b> The output (the finished dish).</li>
-                    </ul>
+                    <span class="badge">MODULE: FUNCTIONS DEPLOYED</span>
+                    <h1>Functions: The Building Blocks of Reusable Code</h1>
+                    <p>Functions allow you to wrap logic into a "package" that can be used repeatedly. This follows the <b>DRY (Don't Repeat Yourself)</b> principle.</p>
 
-                    <h3>12 Practical Function Examples:</h3>
                     <div class="example-grid">
-                        <div class="ex-box"><b>1. Basic Greeting:</b><pre>def hi():\n  print("Hello!")</pre></div>
-                        <div class="ex-box"><b>2. Parameters:</b><pre>def greet(name):\n  print("Hi " + name)</pre></div>
-                        <div class="ex-box"><b>3. Returning Values:</b><pre>def add(a, b):\n  return a + b</pre></div>
-                        <div class="ex-box"><b>4. Default Values:</b><pre>def power(v, p=2):\n  return v ** p</pre></div>
-                        <div class="ex-box"><b>5. Multiple Returns:</b><pre>def stats(nums):\n  return min(nums), max(nums)</pre></div>
-                        <div class="ex-box"><b>6. Recursion:</b> A function calling itself (Factorials).</div>
-                        <div class="ex-box"><b>7. Lambda:</b> Anonymous one-line functions.</div>
-                        <div class="ex-box"><b>8. Callback:</b> Passing a function into another function.</div>
-                        <div class="ex-box"><b>9. Math Helper:</b> Converting Celsius to Fahrenheit.</div>
-                        <div class="ex-box"><b>10. List Processor:</b> A function that squares every number in a list.</div>
-                        <div class="ex-box"><b>11. Validation:</b> Function that checks if an email is valid.</div>
-                        <div class="ex-box"><b>12. Formatting:</b> Function that turns 1000 into "$1,000.00".</div>
+                        <div class="ex-box">
+                            <b>1. Basic Definition</b>
+                            <pre>def welcome():\n  print("Hello!")</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>2. Parameters (Inputs)</b>
+                            <pre>def greet(user):\n  print("Hi " + user)</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>3. Return Statement</b>
+                            <pre>def add(a, b):\n  return a + b</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>4. Default Arguments</b>
+                            <pre>def power(n, p=2):\n  return n ** p</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>5. Multiple Returns</b>
+                            <pre>def get_user():\n  return "ID", "Name"</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>6. Lambda (Anonymous)</b>
+                            <pre>sqr = lambda x: x*x</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>7. *Args (Variable Inputs)</b>
+                            <pre>def sum_all(*nums):\n  return sum(nums)</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>8. Recursive Functions</b>
+                            <pre>def fact(n):\n  # Calls itself</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>9. Local vs Global Scope</b>
+                            <p>Variables inside functions stay inside.</p>
+                        </div>
+                        <div class="ex-box">
+                            <b>10. Higher-Order Functions</b>
+                            <p>Functions that take other functions as input.</p>
+                        </div>
+                        <div class="ex-box">
+                            <b>11. Type Hinting</b>
+                            <pre>def add(a: int, b: int) -> int:</pre>
+                        </div>
+                        <div class="ex-box">
+                            <b>12. Decorators</b>
+                            <p>Functions that wrap and modify other functions.</p>
+                        </div>
                     </div>
                 </div>`,
 
             oop: `
                 <div class="card">
-                    <h1>Object Oriented Programming (OOP)</h1>
-                    <p>OOP is about modeling code after real-world objects.</p>
-                    <div class="example-grid">
-                        <div class="ex-box"><b>Classes:</b> The Blueprint (The idea of a 'User').</div>
-                        <div class="ex-box"><b>Objects:</b> The Instance (User 'John').</div>
-                        <div class="ex-box"><b>Methods:</b> Actions (User .login()).</div>
-                        <div class="ex-box"><b>Attributes:</b> Properties (User .email).</div>
-                    </div>
+                    <h1>Object Oriented Programming</h1>
+                    <p>Classes serve as blueprints for objects.</p>
                     <pre>
-class Robot:
-    def __init__(self, name):
-        self.name = name
-    
-    def say_hi(self):
-        print("Beep Boop, I am " + self.name)
+class Car:
+    def __init__(self, brand):
+        self.brand = brand
+        
+    def drive(self):
+        print(f"{self.brand} is moving")
 
-my_bot = Robot("R2D2")
-my_bot.say_hi()</pre>
+my_car = Car("Tesla")
+my_car.drive()</pre>
                 </div>`
         };
 
         function loadContent(key) {
-            document.getElementById('main-content').innerHTML = contentData[key] || `<h1>Coming Soon</h1>`;
+            document.getElementById('main-content').innerHTML = contentData[key] || `<h1>Loading...</h1>`;
             window.scrollTo(0,0);
             const idx = topics.findIndex(t => t.id === key);
             document.getElementById('progress-bar').style.width = ((idx+1)/topics.length)*100 + "%";
