@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Mastery Hub | The Complete Encyclopedia</title>
+    <title>Programming Mastery Hub | Enterprise Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,7 +18,7 @@
         * { box-sizing: border-box; transition: 0.2s; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Login Overlay */
+        /* Login */
         #login-overlay { position: fixed; inset: 0; background: linear-gradient(135deg, #4f46e5, #7c3aed); display: flex; align-items: center; justify-content: center; z-index: 3000; }
         .login-card { background: var(--card); padding: 3rem; border-radius: 24px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
 
@@ -26,31 +26,31 @@
         .navbar { height: 75px; background: var(--sidebar); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; }
         .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
 
-        /* Hero Section */
+        /* Hero */
         .hero { padding: 80px 20px; text-align: center; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent); border-radius: 30px; margin: 20px; }
         .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .cta-btn { background: var(--primary); color: white; padding: 18px 36px; border-radius: 15px; font-weight: 800; border: none; cursor: pointer; font-size: 1.1rem; }
 
         .main-container { display: flex; min-height: calc(100vh - 75px); }
         .sidebar { width: 320px; background: var(--sidebar); padding: 1.5rem; border-right: 1px solid var(--border); position: sticky; top: 75px; height: calc(100vh - 75px); overflow-y: auto; }
-        .content { flex: 1; padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        .content { flex: 1; padding: 3rem; max-width: 1400px; margin: 0 auto; }
 
-        /* Content Modules */
+        /* Content UI */
         .card { background: var(--card); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border); margin-bottom: 2.5rem; }
-        .section-title { color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; border-left: 8px solid var(--primary); padding-left: 15px; }
+        .section-title { color: var(--primary); font-size: 2.5rem; border-left: 8px solid var(--primary); padding-left: 20px; margin-bottom: 2rem; }
+        .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+        .ex-box { background: var(--bg); padding: 1.5rem; border-radius: 15px; border: 1px solid var(--border); border-top: 4px solid var(--secondary); }
         
-        .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .ex-box { background: var(--bg); padding: 1.8rem; border-radius: 18px; border: 1px solid var(--border); }
-        .ex-box h4 { margin: 0 0 10px 0; color: var(--secondary); font-size: 1.2rem; }
-        
-        pre { background: var(--code-bg); color: #9cdcfe; padding: 1.2rem; border-radius: 10px; overflow-x: auto; font-size: 0.85rem; font-family: 'Fira Code', monospace; margin: 15px 0; }
-        
-        .topic-link { padding: 15px; margin: 8px 0; cursor: pointer; border-radius: 12px; font-weight: 700; color: var(--text); transition: 0.3s; }
-        .topic-link:hover { background: rgba(99, 102, 241, 0.05); }
+        pre { background: var(--code-bg); color: #9cdcfe; padding: 1.2rem; border-radius: 10px; overflow-x: auto; font-size: 0.85rem; font-family: 'Fira Code', monospace; line-height: 1.5; }
+        .topic-link { padding: 15px; margin: 8px 0; cursor: pointer; border-radius: 12px; font-weight: 700; color: var(--text); }
         .topic-link.active { background: var(--primary); color: white; }
 
-        .concept-block { margin-bottom: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        /* Quiz UI */
+        .quiz-card { border: 1px solid var(--border); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; }
+        .opt-btn { display: block; width: 100%; text-align: left; padding: 12px; margin: 8px 0; border: 1px solid var(--border); border-radius: 8px; background: white; cursor: pointer; }
+        .correct { background: #dcfce7 !important; border-color: #22c55e !important; }
+        .wrong { background: #fee2e2 !important; border-color: #ef4444 !important; }
         .hidden { display: none !important; }
+        .cta-btn { background: var(--primary); color: white; padding: 15px 30px; border-radius: 12px; font-weight: 800; border: none; cursor: pointer; }
     </style>
 </head>
 <body data-theme="light">
@@ -58,15 +58,15 @@
     <div id="login-overlay">
         <div class="login-card">
             <h1>Mastery Repo</h1>
-            <p>Enter your developer email to begin</p>
-            <input type="email" id="user-email" placeholder="coder@academy.com" style="width:100%; padding:15px; margin: 25px 0; border-radius: 12px; border: 1px solid var(--border);">
-            <button class="cta-btn" style="width: 100%;" onclick="startApp()">Access Curriculum</button>
+            <p>Enter your developer email to access the repository</p>
+            <input type="email" id="user-email" placeholder="dev@company.com" style="width:100%; padding:15px; margin: 25px 0; border-radius: 12px; border: 1px solid var(--border);">
+            <button class="cta-btn" style="width: 100%;" onclick="startApp()">Unlock Access →</button>
         </div>
     </div>
 
     <nav class="navbar">
         <div class="logo" onclick="loadHome()">Programming Mastery Hub</div>
-        <button onclick="toggleTheme()" class="cta-btn" style="padding: 8px 15px; font-size: 0.9rem;">🌓 Toggle Theme</button>
+        <button onclick="toggleTheme()" class="cta-btn" style="padding: 8px 15px;">🌓 Toggle Theme</button>
     </nav>
 
     <div class="main-container">
@@ -86,57 +86,44 @@
         }
 
         function generateSidebar() {
-            const topics = [
-                { id: 'fundamentals', title: '📖 Fundamentals' },
-                { id: 'core', title: '⚙️ Core Concepts' },
-                { id: 'control', title: '🔄 Control Flow' },
-                { id: 'functions', title: '📦 Functions' },
-                { id: 'oop', title: '🧱 OOP Mastery' }
+            const menu = [
+                { id: 'fundamentals', title: '01. Fundamentals' },
+                { id: 'core', title: '02. Core Logic' },
+                { id: 'control', title: '03. Control Flow' },
+                { id: 'functions', title: '04. Functions' },
+                { id: 'oop', title: '05. OOP Mastery' },
+                { id: 'quiz', title: '06. Final Exam' }
             ];
-            document.getElementById('sidebar-nav').innerHTML = topics.map(t => `
-                <div class="topic-link" id="link-${t.id}" onclick="loadContent('${t.id}')">${t.title}</div>
+            document.getElementById('sidebar-nav').innerHTML = menu.map(m => `
+                <div class="topic-link" id="link-${m.id}" onclick="loadContent('${m.id}')">${m.title}</div>
             `).join('');
         }
 
         function loadHome() {
             document.getElementById('main-content').innerHTML = `
                 <div class="hero">
-                    <h1>Master the Art of <br>Computer Programming</h1>
-                    <p style="font-size: 1.2rem; color: #64748b; max-width: 800px; margin: 0 auto 2rem;">
-                        Programming is the superpower of the 21st century. It allows you to build digital worlds, 
-                        solve complex global problems, and communicate directly with the machines that run our civilization.
-                    </p>
-                    <button class="cta-btn" onclick="loadContent('fundamentals')">Start Learning Now →</button>
-                    <div style="margin-top: 50px; display: flex; justify-content: center; gap: 40px; opacity: 0.6;">
-                        <span>🚀 Scalable Logic</span>
-                        <span>🛠️ Enterprise Ready</span>
-                        <span>🧠 Conceptual Depth</span>
-                    </div>
+                    <h1>The Art of Code</h1>
+                    <p style="font-size: 1.3rem; color: #64748b;">Master the logical foundations of modern technology.</p>
+                    <button class="cta-btn" onclick="loadContent('fundamentals')">Explore Curriculum</button>
                 </div>
             `;
-            document.querySelectorAll('.topic-link').forEach(l => l.classList.remove('active'));
         }
 
         const contentData = {
             fundamentals: `
                 <div class="card">
                     <h1 class="section-title">Programming Fundamentals</h1>
-                    <p>Programming is the process of creating a set of instructions that tell a computer how to perform a task. It is the bridge between human thought and machine execution.</p>
+                    <h3>Understanding the Machine</h3>
+                    <p>Programming is the abstraction layer over hardware. Every instruction travels through a hierarchy of complexity.</p>
                     
-                    <h3>History & Evolution</h3>
-                    <p>From Ada Lovelace's first algorithm for the Analytical Engine to modern AI-driven languages, programming has evolved from physical punched cards to high-level abstractions.</p>
-                    
+                    <h3>The CPU Lifecycle</h3>
+                    <p>The Central Processing Unit operates on a loop called Fetch-Decode-Execute.</p>
                     
 
-                    <h3>Compiled vs. Interpreted</h3>
-                    <ul>
-                        <li><b>Compiled:</b> The code is translated into machine code all at once before running (C++, Rust). Fast performance.</li>
-                        <li><b>Interpreted:</b> The code is translated line-by-line during execution (Python, JavaScript). High flexibility.</li>
-                    </ul>
+[Image of the CPU fetch-decode-execute cycle]
 
-                    <h3>High-Level vs. Low-Level</h3>
-                    <p>Low-level languages (Assembly) are close to hardware. High-level languages (Python) are close to human language.</p>
-                    
+                    <h3>Low-Level vs High-Level</h3>
+                    <p>Low-level languages (Assembly) give direct hardware control, while High-level languages (Python) offer human-readable syntax.</p>
                     
 
 [Image of the von Neumann architecture block diagram]
@@ -145,97 +132,137 @@
 
             core: `
                 <div class="card">
-                    <h1 class="section-title">Core Concepts</h1>
-                    
-                    <div class="concept-block">
-                        <h2>1. Variables (15 Patterns)</h2>
-                        <p>Variables are containers for storing data values. In memory, they represent a reserved location.</p>
-                        <div class="example-grid">
-                            ${Array.from({length: 15}, (_, i) => `
-                                <div class="ex-box">
-                                    <h4>Pattern ${i+1}: ${['String','Integer','Global','Local','Naming','Constant','Pointer','Reference','Static','Dynamic','Volatile','Register','Shadow','Strict','Loose'][i] || 'Var'}</h4>
-                                    <pre>data_${i+1} = ${i*100}</pre>
-                                    <p>Explanantion: Definition and memory allocation for variable type ${i+1}.</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="concept-block">
-                        <h2>2. Data Types (15 Variations)</h2>
-                        <div class="example-grid">
-                            ${Array.from({length: 15}, (_, i) => `
-                                <div class="ex-box">
-                                    <h4>Type ${i+1}: ${['Char','String','Short','Long','Float','Double','Bool','Signed','Unsigned','Array','Struct','Union','Enum','Null','Object'][i]}</h4>
-                                    <p>How the machine interprets bits for ${i+1}.</p>
-                                </div>
-                            `).join('')}
-                        </div>
+                    <h1 class="section-title">Core: 15 Data & Variable Patterns</h1>
+                    <div class="example-grid">
+                        <div class="ex-box"><h4>1. Integer</h4><pre>count = 10</pre></div>
+                        <div class="ex-box"><h4>2. Float</h4><pre>price = 19.99</pre></div>
+                        <div class="ex-box"><h4>3. String</h4><pre>name = "User"</pre></div>
+                        <div class="ex-box"><h4>4. Boolean</h4><pre>is_active = True</pre></div>
+                        <div class="ex-box"><h4>5. List/Array</h4><pre>items = [1, 2, 3]</pre></div>
+                        <div class="ex-box"><h4>6. Dictionary</h4><pre>map = {"id": 1}</pre></div>
+                        <div class="ex-box"><h4>7. Tuple</h4><pre>pos = (10, 20)</pre></div>
+                        <div class="ex-box"><h4>8. Set</h4><pre>unique = {1, 2, 3}</pre></div>
+                        <div class="ex-box"><h4>9. Constant</h4><pre>PI = 3.14</pre></div>
+                        <div class="ex-box"><h4>10. NoneType</h4><pre>data = None</pre></div>
+                        <div class="ex-box"><h4>11. Type Casting</h4><pre>x = int("5")</pre></div>
+                        <div class="ex-box"><h4>12. String Fmt</h4><pre>f"Hello {name}"</pre></div>
+                        <div class="ex-box"><h4>13. Multi-Assign</h4><pre>a, b = 1, 2</pre></div>
+                        <div class="ex-box"><h4>14. Byte Data</h4><pre>b = b"0101"</pre></div>
+                        <div class="ex-box"><h4>15. Complex Num</h4><pre>z = 1 + 2j</pre></div>
                     </div>
                 </div>`,
 
             control: `
                 <div class="card">
-                    <h1 class="section-title">Control Structures</h1>
-                    <p>Control structures determine the flow of execution based on conditions and loops.</p>
-                    
-                    <div class="concept-block">
-                        <h2>Conditional Logic (15 Examples)</h2>
-                        <div class="example-grid">
-                            ${Array.from({length: 15}, (_, i) => `
-                                <div class="ex-box">
-                                    <h4>Scenario ${i+1}</h4>
-                                    <pre>if condition_${i+1}:\n  execute_logic()</pre>
-                                    <p>Logic branch for handling complex case ${i+1}.</p>
-                                </div>
-                            `).join('')}
-                        </div>
+                    <h1 class="section-title">Control Flow: 15 Logical Branching</h1>
+                    <div class="example-grid">
+                        <div class="ex-box"><h4>1. If Logic</h4><pre>if a > b:</pre></div>
+                        <div class="ex-box"><h4>2. Else</h4><pre>else: ...</pre></div>
+                        <div class="ex-box"><h4>3. Elif</h4><pre>elif c == d:</pre></div>
+                        <div class="ex-box"><h4>4. For Loop</h4><pre>for i in x:</pre></div>
+                        <div class="ex-box"><h4>5. While Loop</h4><pre>while run:</pre></div>
+                        <div class="ex-box"><h4>6. Break</h4><pre>if end: break</pre></div>
+                        <div class="ex-box"><h4>7. Continue</h4><pre>if skip: continue</pre></div>
+                        <div class="ex-box"><h4>8. Switch/Match</h4><pre>match x:</pre></div>
+                        <div class="ex-box"><h4>9. Try/Except</h4><pre>try: 1/0</pre></div>
+                        <div class="ex-box"><h4>10. Logical AND</h4><pre>if a and b:</pre></div>
+                        <div class="ex-box"><h4>11. Logical OR</h4><pre>if a or b:</pre></div>
+                        <div class="ex-box"><h4>12. Logical NOT</h4><pre>if not a:</pre></div>
+                        <div class="ex-box"><h4>13. Nested If</h4><pre>if x: if y:</pre></div>
+                        <div class="ex-box"><h4>14. Range Loop</h4><pre>for i in range(5):</pre></div>
+                        <div class="ex-box"><h4>15. Ternary</h4><pre>x = 1 if a else 0</pre></div>
                     </div>
                 </div>`,
 
             functions: `
                 <div class="card">
-                    <h1 class="section-title">Functions & Modules</h1>
-                    <div class="concept-block">
-                        <h2>Function Definitions (15 Styles)</h2>
-                        <div class="example-grid">
-                            ${Array.from({length: 15}, (_, i) => `
-                                <div class="ex-box">
-                                    <h4>Method ${i+1}</h4>
-                                    <pre>def function_${i+1}(param):\n  return data</pre>
-                                    <p>Encapsulating logic for reusability in style ${i+1}.</p>
-                                </div>
-                            `).join('')}
-                        </div>
+                    <h1 class="section-title">Functions: 15 Architectural Blocks</h1>
+                    <div class="example-grid">
+                        <div class="ex-box"><h4>1. Def</h4><pre>def start():</pre></div>
+                        <div class="ex-box"><h4>2. Return</h4><pre>return x</pre></div>
+                        <div class="ex-box"><h4>3. Params</h4><pre>def add(a, b):</pre></div>
+                        <div class="ex-box"><h4>4. Default Val</h4><pre>def log(msg="Hi"):</pre></div>
+                        <div class="ex-box"><h4>5. Lambda</h4><pre>x = lambda a: a+1</pre></div>
+                        <div class="ex-box"><h4>6. Recursion</h4><pre>def fact(n):</pre></div>
+                        <div class="ex-box"><h4>7. Global</h4><pre>global count</pre></div>
+                        <div class="ex-box"><h4>8. Local Scope</h4><pre>x = 5 # in def</pre></div>
+                        <div class="ex-box"><h4>9. *Args</h4><pre>def fn(*args):</pre></div>
+                        <div class="ex-box"><h4>10. **Kwargs</h4><pre>def fn(**kw):</pre></div>
+                        <div class="ex-box"><h4>11. Nested Def</h4><pre>def outer(): def inner():</pre></div>
+                        <div class="ex-box"><h4>12. Docstring</h4><pre>""" help text """</pre></div>
+                        <div class="ex-box"><h4>13. Decorator</h4><pre>@timer</pre></div>
+                        <div class="ex-box"><h4>14. Type Hint</h4><pre>def fn(x: int):</pre></div>
+                        <div class="ex-box"><h4>15. Async Def</h4><pre>async def fetch():</pre></div>
                     </div>
                 </div>`,
 
             oop: `
                 <div class="card">
-                    <h1 class="section-title">Object-Oriented Programming</h1>
-                    <div class="concept-block">
-                        <h2>The 6 Pillars (15 Examples each)</h2>
-                        <div class="example-grid">
-                            <div class="ex-box"><h4>Inheritance</h4><p>Base class passing traits to children.</p></div>
-                            <div class="ex-box"><h4>Polymorphism</h4><p>One interface, multiple implementations.</p></div>
-                            <div class="ex-box"><h4>Encapsulation</h4><p>Bundling data and methods, hiding internals.</p></div>
-                            <div class="ex-box"><h4>Abstraction</h4><p>Hiding complex reality behind simple models.</p></div>
-                        </div>
-                        <div class="example-grid" style="margin-top:20px;">
-                            ${Array.from({length: 15}, (_, i) => `
-                                <div class="ex-box">
-                                    <h4>OOP Instance ${i+1}</h4>
-                                    <pre>class MyObj_${i+1}:\n  def __init__(self):</pre>
-                                    <p>Demonstrating pillar implementation for case ${i+1}.</p>
-                                </div>
-                            `).join('')}
-                        </div>
+                    <h1 class="section-title">OOP: 15 Structure Concepts</h1>
+                    <div class="example-grid">
+                        <div class="ex-box"><h4>1. Class</h4><pre>class User:</pre></div>
+                        <div class="ex-box"><h4>2. Object</h4><pre>u = User()</pre></div>
+                        <div class="ex-box"><h4>3. __init__</h4><pre>def __init__(self):</pre></div>
+                        <div class="ex-box"><h4>4. Self</h4><pre>self.id = 1</pre></div>
+                        <div class="ex-box"><h4>5. Inheritance</h4><pre>class Admin(User):</pre></div>
+                        <div class="ex-box"><h4>6. Encapsulation</h4><pre>self.__id = 1</pre></div>
+                        <div class="ex-box"><h4>7. Polymorphism</h4><pre>obj.draw()</pre></div>
+                        <div class="ex-box"><h4>8. Abstraction</h4><pre>class Shape(ABC):</pre></div>
+                        <div class="ex-box"><h4>9. Super()</h4><pre>super().__init__()</pre></div>
+                        <div class="ex-box"><h4>10. Class Var</h4><pre>users = 0</pre></div>
+                        <div class="ex-box"><h4>11. Overriding</h4><pre>def login(self):</pre></div>
+                        <div class="ex-box"><h4>12. StaticMethod</h4><pre>@staticmethod</pre></div>
+                        <div class="ex-box"><h4>13. Property</h4><pre>@property</pre></div>
+                        <div class="ex-box"><h4>14. __str__</h4><pre>def __str__(self):</pre></div>
+                        <div class="ex-box"><h4>15. Composition</h4><pre>self.engine = Engine()</pre></div>
                     </div>
                 </div>`
         };
 
+        const questions = [
+            { q: "Shared memory for data/code is what architecture?", a: ["Von Neumann", "Harvard"], c: 0 },
+            { q: "Fastest memory?", a: ["RAM", "Registers"], c: 1 },
+            { q: "Is a Tuple mutable?", a: ["Yes", "No"], c: 1 },
+            { q: "Hiding internal data?", a: ["Encapsulation", "Inheritance"], c: 0 },
+            { q: "One-line function?", a: ["Lambda", "Recursive"], c: 0 },
+            { q: "Convert line-by-line?", a: ["Compiler", "Interpreter"], c: 1 },
+            { q: "Integer 1010 in decimal?", a: ["8", "10"], c: 1 },
+            { q: "Exit loop early?", a: ["Break", "Skip"], c: 0 },
+            { q: "Base for all logic?", a: ["Booleans", "Strings"], c: 0 },
+            { q: "Function calls itself?", a: ["Recursion", "Nested"], c: 0 },
+            { q: "Null value in Python?", a: ["None", "Null"], c: 0 },
+            { q: "Ordered collection?", a: ["List", "Set"], c: 0 },
+            { q: "Unique items only?", a: ["List", "Set"], c: 1 },
+            { q: "Immutable version of set?", a: ["FrozenSet", "StaticSet"], c: 0 },
+            { q: "Decimal precision?", a: ["Float", "Int"], c: 0 },
+            { q: "Call parent method?", a: ["Super()", "Parent()"], c: 0 },
+            { q: "Handle errors?", a: ["Try/Except", "Do/While"], c: 0 },
+            { q: "Object template?", a: ["Class", "Method"], c: 0 },
+            { q: "Current instance ref?", a: ["Self", "This"], c: 0 },
+            { q: "Whole numbers?", a: ["Integers", "Floats"], c: 0 }
+        ];
+
+        function checkQuiz(qIdx, optIdx, btn) {
+            btn.disabled = true;
+            if(optIdx === questions[qIdx].c) btn.classList.add('correct');
+            else btn.classList.add('wrong');
+        }
+
         function loadContent(key) {
-            document.getElementById('main-content').innerHTML = contentData[key];
+            if(key === 'quiz') {
+                document.getElementById('main-content').innerHTML = `
+                    <div class="card">
+                        <h1 class="section-title">Final Examination</h1>
+                        ${questions.map((q, i) => `
+                            <div class="quiz-card">
+                                <p><b>${i+1}. ${q.q}</b></p>
+                                ${q.a.map((o, oi) => `<button class="opt-btn" onclick="checkQuiz(${i}, ${oi}, this)">${o}</button>`).join('')}
+                            </div>
+                        `).join('')}
+                    </div>`;
+            } else {
+                document.getElementById('main-content').innerHTML = contentData[key];
+            }
             document.querySelectorAll('.topic-link').forEach(l => l.classList.remove('active'));
             document.getElementById(`link-${key}`).classList.add('active');
             window.scrollTo({top: 0, behavior: 'smooth'});
