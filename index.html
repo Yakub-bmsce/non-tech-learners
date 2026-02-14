@@ -15,15 +15,12 @@
         * { box-sizing: border-box; transition: 0.2s; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Login */
         #login-overlay { position: fixed; inset: 0; background: linear-gradient(135deg, #1e1b4b, #312e81); display: flex; align-items: center; justify-content: center; z-index: 3000; }
         .login-card { background: var(--card); padding: 3rem; border-radius: 24px; text-align: center; max-width: 450px; width: 90%; border: 1px solid var(--primary); box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
 
-        /* Navigation */
         .navbar { height: 75px; background: var(--sidebar); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; }
         .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
 
-        /* Hero */
         .hero { padding: 80px 20px; text-align: center; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.2), transparent); border-radius: 30px; margin: 20px; }
         .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
@@ -31,22 +28,18 @@
         .sidebar { width: 320px; background: var(--sidebar); padding: 1.5rem; border-right: 1px solid var(--border); position: sticky; top: 75px; height: calc(100vh - 75px); overflow-y: auto; }
         .content { flex: 1; padding: 3rem; max-width: 1400px; margin: 0 auto; }
 
-        /* Content UI */
         .card { background: var(--card); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border); margin-bottom: 2.5rem; }
         .section-title { color: var(--primary); font-size: 2.5rem; border-left: 8px solid var(--primary); padding-left: 20px; margin-bottom: 2rem; }
         .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
         .ex-box { background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 15px; border: 1px solid var(--border); border-top: 4px solid var(--secondary); }
         
-        /* Real World Box */
-        .rw-box { margin-top: 2rem; padding: 1.5rem; border-radius: 15px; background: #1e1b4b; border: 1px solid var(--primary); }
+        .rw-box { margin-top: 2rem; padding: 1.5rem; border-radius: 15px; background: #111827; border: 1px solid var(--secondary); }
         .rw-title { color: #f472b6; font-weight: 800; margin-bottom: 10px; display: block; }
-        .sol-title { color: #10b981; font-weight: 800; margin-top: 15px; display: block; }
 
         pre { background: var(--code-bg); color: #9cdcfe; padding: 1.2rem; border-radius: 10px; overflow-x: auto; font-size: 0.85rem; font-family: 'Fira Code', monospace; line-height: 1.5; border: 1px solid #334155; }
         .topic-link { padding: 15px; margin: 8px 0; cursor: pointer; border-radius: 12px; font-weight: 700; color: #94a3b8; }
         .topic-link.active { background: var(--primary); color: white; box-shadow: 0 0 15px rgba(99,102,241,0.4); }
 
-        /* Quiz UI */
         .quiz-card { border: 1px solid var(--border); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; background: rgba(0,0,0,0.1); }
         .opt-btn { display: block; width: 100%; text-align: left; padding: 12px; margin: 8px 0; border: 1px solid var(--border); border-radius: 8px; background: #0f172a; color: white; cursor: pointer; }
         .correct { background: #064e3b !important; border-color: #22c55e !important; }
@@ -113,36 +106,34 @@
             fundamentals: `
                 <div class="card">
                     <h1 class="section-title">Programming Fundamentals</h1>
-                    <h3>Understanding the Machine</h3>
-                    <p>Programming is the abstraction layer over hardware. Every instruction travels through a hierarchy of complexity.</p>
-                    
                     <h3>The CPU Lifecycle</h3>
-                    <p>The Central Processing Unit operates on a loop called Fetch-Decode-Execute.</p>
                     
 
 [Image of the CPU fetch-decode-execute cycle]
 
-                    <h3>Low-Level vs High-Level</h3>
-                    <p>Low-level languages (Assembly) give direct hardware control, while High-level languages (Python) offer human-readable syntax.</p>
-                    
-
-[Image of the von Neumann architecture block diagram]
-
-
                     <div class="rw-box">
-                        <span class="rw-title">🚀 PROBLEM: Reduce Execution Latency</span>
-                        <p>A stock trading app is too slow using standard lists.</p>
-                        <span class="sol-title">SOLUTION (C++ Low Level):</span>
-                        <pre>// Direct memory allocation for speed
-int* trades = new int[1000]; 
-// Process directly on hardware buffer
-trades[0] = 500;</pre>
+                        <span class="rw-title">🚀 Real-World Solution: High Frequency Trading (C++)</span>
+                        <pre>
+// C++ solution for zero-latency memory access
+#include &lt;iostream&gt;
+
+void processTrade(int* price) {
+    // Pointer arithmetic avoids the overhead of object lookups
+    *price = (*price * 105) / 100; 
+}
+
+int main() {
+    int current_price = 100;
+    processTrade(&current_price);
+    return 0;
+}
+                        </pre>
                     </div>
                 </div>`,
 
             core: `
                 <div class="card">
-                    <h1 class="section-title">Core: 15 Data & Variable Patterns</h1>
+                    <h1 class="section-title">02. Core: 15 Data Patterns</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. Integer</h4><pre>count = 10</pre></div>
                         <div class="ex-box"><h4>2. Float</h4><pre>price = 19.99</pre></div>
@@ -161,17 +152,23 @@ trades[0] = 500;</pre>
                         <div class="ex-box"><h4>15. Complex Num</h4><pre>z = 1 + 2j</pre></div>
                     </div>
                     <div class="rw-box">
-                        <span class="rw-title">📊 PROBLEM: Duplicate User IDs</span>
-                        <p>Removing duplicates from a list of 1 million entries.</p>
-                        <span class="sol-title">SOLUTION (Set Logic):</span>
-                        <pre>raw_data = [101, 102, 101, 105]
-clean_data = list(set(raw_data)) # O(1) average lookup</pre>
+                        <span class="rw-title">📊 Real-World Solution: Inventory Deduplication (Python)</span>
+                        <pre>
+# Efficiently cleaning product IDs using Set hashing
+bulk_shipment = ["A1", "B2", "A1", "C3", "B2"]
+
+def get_unique_inventory(data):
+    # Returns O(1) lookup time collection
+    return list(set(data))
+
+print(get_unique_inventory(bulk_shipment))
+                        </pre>
                     </div>
                 </div>`,
 
             control: `
                 <div class="card">
-                    <h1 class="section-title">Control Flow: 15 Logical Branching</h1>
+                    <h1 class="section-title">03. Control Flow: 15 Logical Branching</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. If Logic</h4><pre>if a > b:</pre></div>
                         <div class="ex-box"><h4>2. Else</h4><pre>else: ...</pre></div>
@@ -190,19 +187,26 @@ clean_data = list(set(raw_data)) # O(1) average lookup</pre>
                         <div class="ex-box"><h4>15. Ternary</h4><pre>x = 1 if a else 0</pre></div>
                     </div>
                     <div class="rw-box">
-                        <span class="rw-title">🛡️ PROBLEM: Rate Limiting Logins</span>
-                        <p>Stop attempts after 3 failures.</p>
-                        <span class="sol-title">SOLUTION:</span>
-                        <pre>for i in range(3):
-    if login(): break
-else:
-    lock_account()</pre>
+                        <span class="rw-title">🛡️ Real-World Solution: Security Login Throttling (Python)</span>
+                        <pre>
+attempts = 0
+MAX_RETRIES = 3
+
+def login_gate(password):
+    global attempts
+    while attempts < MAX_RETRIES:
+        if password == "secret123":
+            return "ACCESS_GRANTED"
+        attempts += 1
+        print(f"Failed. Attempt {attempts}/{MAX_RETRIES}")
+    return "ACCOUNT_LOCKED"
+                        </pre>
                     </div>
                 </div>`,
 
             functions: `
                 <div class="card">
-                    <h1 class="section-title">Functions: 15 Architectural Blocks</h1>
+                    <h1 class="section-title">04. Functions: 15 Architectural Blocks</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. Def</h4><pre>def start():</pre></div>
                         <div class="ex-box"><h4>2. Return</h4><pre>return x</pre></div>
@@ -215,24 +219,33 @@ else:
                         <div class="ex-box"><h4>9. *Args</h4><pre>def fn(*args):</pre></div>
                         <div class="ex-box"><h4>10. **Kwargs</h4><pre>def fn(**kw):</pre></div>
                         <div class="ex-box"><h4>11. Nested Def</h4><pre>def outer(): def inner():</pre></div>
-                        <div class="ex-box"><h4>12. Docstring</h4><pre>""" help text """</pre></div>
+                        <div class="ex-box"><h4>12. Docstring</h4><pre>""" help """</pre></div>
                         <div class="ex-box"><h4>13. Decorator</h4><pre>@timer</pre></div>
                         <div class="ex-box"><h4>14. Type Hint</h4><pre>def fn(x: int):</pre></div>
                         <div class="ex-box"><h4>15. Async Def</h4><pre>async def fetch():</pre></div>
                     </div>
                     <div class="rw-box">
-                        <span class="rw-title">🌐 PROBLEM: API Timeout</span>
-                        <p>Fetching data without hanging the UI.</p>
-                        <span class="sol-title">SOLUTION (Async):</span>
-                        <pre>async def get_data():
-    res = await call_server()
-    return res</pre>
+                        <span class="rw-title">🌐 Real-World Solution: Non-blocking API calls (Python)</span>
+                        <pre>
+import asyncio
+
+async def call_database():
+    # Simulates a 2-second wait without blocking the main program
+    await asyncio.sleep(2)
+    return {"status": 200, "data": "User_Profile"}
+
+async def main():
+    result = await call_database()
+    print(result)
+
+asyncio.run(main())
+                        </pre>
                     </div>
                 </div>`,
 
             oop: `
                 <div class="card">
-                    <h1 class="section-title">OOP: 15 Structure Concepts</h1>
+                    <h1 class="section-title">05. OOP Mastery: 15 Concepts</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. Class</h4><pre>class User:</pre></div>
                         <div class="ex-box"><h4>2. Object</h4><pre>u = User()</pre></div>
@@ -251,11 +264,25 @@ else:
                         <div class="ex-box"><h4>15. Composition</h4><pre>self.engine = Engine()</pre></div>
                     </div>
                     <div class="rw-box">
-                        <span class="rw-title">🎮 PROBLEM: Enemy AI Variety</span>
-                        <p>Handling different attacks for 100 enemies.</p>
-                        <span class="sol-title">SOLUTION (Polymorphism):</span>
-                        <pre>class Boss(Enemy):
-    def attack(self): fire_ball()</pre>
+                        <span class="rw-title">🎮 Real-World Solution: Game Entity Polymorphism (Python)</span>
+                        <pre>
+class Monster:
+    def move(self):
+        return "Generic walk"
+
+class Dragon(Monster):
+    def move(self):
+        return "Flying through sky"
+
+class Slime(Monster):
+    def move(self):
+        return "Sliding on ground"
+
+# One list of different types, one shared interface
+enemies = [Dragon(), Slime()]
+for e in enemies:
+    print(e.move())
+                        </pre>
                     </div>
                 </div>`
         };
