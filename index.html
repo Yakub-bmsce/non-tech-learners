@@ -87,7 +87,7 @@
 
     <nav class="navbar">
         <div class="logo" onclick="loadHome()">Programming Mastery Hub</div>
-        <div style="color: var(--secondary); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;">DARK MODE ENABLED</div>
+        <div style="color: var(--secondary); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;">DARK MODE ACTIVE</div>
     </nav>
 
     <div class="main-container">
@@ -128,7 +128,6 @@
             `;
         }
 
-        // Expanded content with Real World Problems added to each section
         const contentData = {
             fundamentals: `
                 <div class="card">
@@ -142,17 +141,23 @@
 
 [Image of the CPU fetch-decode-execute cycle]
 
+                    <h3>Low-Level vs High-Level</h3>
+                    <p>Low-level languages give direct hardware control, while High-level languages offer human-readable syntax.</p>
+                    
+
+[Image of the von Neumann architecture block diagram]
+
 
                     <div class="rw-box">
                         <div class="rw-header">🚀 Real World Problem: Hardware Latency</div>
                         <p><b>Scenario:</b> A high-frequency trading app is too slow. 
-                        <b>Solution:</b> Developers move from a high-level language (Python) to a low-level language (C++) to reduce the abstraction layers between the code and the CPU, saving microseconds that equal millions of dollars.</p>
+                        <b>Solution:</b> Developers move from a high-level language (Python) to a low-level language (C++) to reduce abstraction layers, saving microseconds that equal millions of dollars.</p>
                     </div>
                 </div>`,
 
             core: `
                 <div class="card">
-                    <h1 class="section-title">Core: Data & Variable Patterns</h1>
+                    <h1 class="section-title">Core: 15 Data & Variable Patterns</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. Integer</h4><pre>count = 10</pre></div>
                         <div class="ex-box"><h4>2. Float</h4><pre>price = 19.99</pre></div>
@@ -170,17 +175,16 @@
                         <div class="ex-box"><h4>14. Byte Data</h4><pre>b = b"0101"</pre></div>
                         <div class="ex-box"><h4>15. Complex Num</h4><pre>z = 1 + 2j</pre></div>
                     </div>
-
                     <div class="rw-box">
                         <div class="rw-header">📊 Real World Problem: Inventory Tracking</div>
                         <p><b>Scenario:</b> An e-commerce site needs to store unique product IDs and prevent duplicates.
-                        <b>Solution:</b> Using a <b>Set</b> data type automatically filters out duplicate entries, ensuring the inventory count remains accurate without manual checks.</p>
+                        <b>Solution:</b> Using a <b>Set</b> data type automatically filters duplicate entries, ensuring accuracy without manual checks.</p>
                     </div>
                 </div>`,
 
             control: `
                 <div class="card">
-                    <h1 class="section-title">Control Flow: Logical Branching</h1>
+                    <h1 class="section-title">Control Flow: 15 Logical Branching</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. If Logic</h4><pre>if a > b:</pre></div>
                         <div class="ex-box"><h4>2. Else</h4><pre>else: ...</pre></div>
@@ -198,17 +202,16 @@
                         <div class="ex-box"><h4>14. Range Loop</h4><pre>for i in range(5):</pre></div>
                         <div class="ex-box"><h4>15. Ternary</h4><pre>x = 1 if a else 0</pre></div>
                     </div>
-
                     <div class="rw-box">
                         <div class="rw-header">🛡️ Real World Problem: Security Rate Limiting</div>
                         <p><b>Scenario:</b> A hacker is trying to brute-force a login.
-                        <b>Solution:</b> A <b>While Loop</b> combined with an <b>If</b> statement tracks attempt counts. If attempts exceed 5, a 'Break' is triggered and the IP is temporarily blocked.</p>
+                        <b>Solution:</b> A <b>While Loop</b> tracks attempt counts. If attempts exceed 5, a 'Break' is triggered and the IP is blocked.</p>
                     </div>
                 </div>`,
 
             functions: `
                 <div class="card">
-                    <h1 class="section-title">Functions: Architectural Blocks</h1>
+                    <h1 class="section-title">Functions: 15 Architectural Blocks</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. Def</h4><pre>def start():</pre></div>
                         <div class="ex-box"><h4>2. Return</h4><pre>return x</pre></div>
@@ -226,17 +229,16 @@
                         <div class="ex-box"><h4>14. Type Hint</h4><pre>def fn(x: int):</pre></div>
                         <div class="ex-box"><h4>15. Async Def</h4><pre>async def fetch():</pre></div>
                     </div>
-
                     <div class="rw-box">
                         <div class="rw-header">🌐 Real World Problem: Database API</div>
-                        <p><b>Scenario:</b> Fetching user data from a server takes 2 seconds, freezing the app UI.
-                        <b>Solution:</b> Using <b>Async Functions</b> allows the program to request the data and continue running other tasks, updating the UI only when the data arrives.</p>
+                        <p><b>Scenario:</b> Fetching user data takes 2 seconds, freezing the app UI.
+                        <b>Solution:</b> <b>Async Functions</b> allow the program to request data and keep running other tasks until the data arrives.</p>
                     </div>
                 </div>`,
 
             oop: `
                 <div class="card">
-                    <h1 class="section-title">OOP: Structure Concepts</h1>
+                    <h1 class="section-title">OOP: 15 Structure Concepts</h1>
                     <div class="example-grid">
                         <div class="ex-box"><h4>1. Class</h4><pre>class User:</pre></div>
                         <div class="ex-box"><h4>2. Object</h4><pre>u = User()</pre></div>
@@ -254,11 +256,10 @@
                         <div class="ex-box"><h4>14. __str__</h4><pre>def __str__(self):</pre></div>
                         <div class="ex-box"><h4>15. Composition</h4><pre>self.engine = Engine()</pre></div>
                     </div>
-
                     <div class="rw-box">
                         <div class="rw-header">🎮 Real World Problem: Game Development</div>
-                        <p><b>Scenario:</b> A game has 100 different types of monsters with different attacks.
-                        <b>Solution:</b> Use <b>Inheritance</b>. Create a base 'Monster' class with shared traits (health, position) and use <b>Polymorphism</b> so each monster's 'attack()' method behaves differently.</p>
+                        <p><b>Scenario:</b> A game has 100 monster types with different attacks.
+                        <b>Solution:</b> Use <b>Inheritance</b> for shared traits and <b>Polymorphism</b> so each monster's 'attack()' method behaves differently.</p>
                     </div>
                 </div>`
         };
