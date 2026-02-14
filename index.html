@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnEase - Tech for Everyone</title>
+    <style>
+        :root { --primary: #4A90E2; --dark: #333; --light: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--light); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 500px; text-align: center; }
+        .hidden { display: none; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; margin: 10px; width: 80%; font-size: 16px; transition: 0.3s; }
+        button:hover { opacity: 0.8; transform: translateY(-2px); }
+        input { width: 80%; padding: 10px; margin: 10px; border: 1px solid #ddd; border-radius: 6px; }
+        h2 { color: var(--dark); }
+    </style>
+</head>
+<body>
+
+    <div id="login-page" class="container">
+        <h2>Welcome to LearnEase 🚀</h2>
+        <p>Start your journey from Zero to Hero.</p>
+        <input type="text" id="username" placeholder="Enter your name">
+        <button onclick="goToField()">Start Learning</button>
+    </div>
+
+    <div id="field-page" class="container hidden">
+        <h2>What do you want to master?</h2>
+        <button onclick="selectField('Coding')">💻 Coding (Python, JS, etc.)</button>
+        <button onclick="selectField('DSA')">🧠 Data Structures</button>
+        <button onclick="selectField('AI')">🤖 AI Automation</button>
+        <button onclick="selectField('Hacking')">🛡️ Ethical Hacking</button>
+    </div>
+
+    <div id="language-page" class="container hidden">
+        <h2>Pick a Language</h2>
+        <button onclick="goToLevel()">Python (Best for Beginners)</button>
+        <button onclick="goToLevel()">JavaScript (For Web)</button>
+        <button onclick="goToLevel()">Java</button>
+    </div>
+
+    <div id="level-page" class="container hidden">
+        <h2>Your Current Level?</h2>
+        <button onclick="showContent('Beginner')">Beginner (Starting Fresh)</button>
+        <button onclick="showContent('Intermediate')">Intermediate (In Touchup)</button>
+        <button onclick="showContent('Advanced')">Advanced (Ready for more)</button>
+    </div>
+
+    <div id="content-page" class="container hidden">
+        <h2 id="level-title"></h2>
+        <p id="level-desc" style="text-align: left; line-height: 1.6;"></p>
+        <hr>
+        <h3>Quick Quiz</h3>
+        <p id="quiz-question"></p>
+        <button onclick="alert('Great job! Keep moving forward.')">Submit Answer</button>
+        <button onclick="location.reload()" style="background: #666;">Restart</button>
+    </div>
+
+    <script>
+        let currentField = "";
+
+        function hideAll() {
+            document.querySelectorAll('.container').forEach(div => div.classList.add('hidden'));
+        }
+
+        function goToField() {
+            const name = document.getElementById('username').value;
+            if(!name) return alert("Please enter your name");
+            hideAll();
+            document.getElementById('field-page').classList.remove('hidden');
+        }
+
+        function selectField(field) {
+            currentField = field;
+            hideAll();
+            if(field === 'Coding') {
+                document.getElementById('language-page').classList.remove('hidden');
+            } else {
+                goToLevel();
+            }
+        }
+
+        function goToLevel() {
+            hideAll();
+            document.getElementById('level-page').classList.remove('hidden');
+        }
+
+        function showContent(level) {
+            hideAll();
+            const title = document.getElementById('level-title');
+            const desc = document.getElementById('level-desc');
+            const quiz = document.getElementById('quiz-question');
+            
+            if(level === 'Beginner') {
+                title.innerText = "Beginner Foundations";
+                desc.innerText = "We focus on Variables (containers for data) and Loops (doing things repeatedly). Think of a variable like a labeled box in your kitchen!";
+                quiz.innerText = "Which keyword is used to save data in a variable? (a) var (b) loop";
+            } else if(level === 'Intermediate') {
+                title.innerText = "Intermediate Skills";
+                desc.innerText = "We focus on Functions (reusable code blocks) and Logic. Functions are like recipes you can use over and over.";
+                quiz.innerText = "What do we call a block of code that performs a specific task? (a) Function (b) Variable";
+            } else {
+                title.innerText = "Advanced Mastery";
+                desc.innerText = "Time for Decorators and Optimization. Decorators allow you to modify the behavior of a function without changing its source code.";
+                quiz.innerText = "Decorators are used to wrap another function. True or False?";
+            }
+            document.getElementById('content-page').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
